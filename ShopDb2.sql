@@ -117,9 +117,25 @@ AS
 	SELECT * FROM tblCategory
 GO
 
+--add category
+CREATE PROCEDURE CreateCategory
+@name VARCHAR(50)
+AS
+	INSERT INTO tblCategory(name) VALUES(@name) 
+GO
+
 --delete category by id
 CREATE PROCEDURE deleteCategoryById
 @id INT
 AS
 	DELETE FROM tblCategory WHERE tblCategory.id = @id
 GO
+
+--update category by id
+CREATE PROCEDURE updateCategoryById
+@id INT,
+@name VARCHAR(20)
+AS
+	UPDATE tblCategory SET tblCategory.name = @name WHERE tblCategory.id = @id
+GO
+
