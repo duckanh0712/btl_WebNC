@@ -20,12 +20,6 @@
                 <span id="errPassword" class="help-block col-md-4" text="" style="margin: 0px; font-size: 13px;"></span>
             </div>
             <div class="form-group">
-                <label for="inputPassword3" class="col-sm-2 control-label">Remember me</label>
-                <div class="col-md-5">
-                    <asp:CheckBox ID="Remember" runat="server" />
-                </div>
-            </div>
-            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <asp:Button ID="btnSubmit" runat="server" class="btn btn-default" Text="Đăng Nhập" OnClick="btnSubmit_Click" />
                     <input type="reset" text="Nhập lại" class="btn btn-default" />

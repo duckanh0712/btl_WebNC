@@ -139,3 +139,34 @@ AS
 	UPDATE tblCategory SET tblCategory.name = @name WHERE tblCategory.id = @id
 GO
 
+--get category by id
+CREATE PROCEDURE getCategoryById
+@id INT
+AS
+	BEGIN
+		SELECT name FROM tblCategory WHERE tblCategory.id = @id
+	END
+GO
+
+--delete product by id
+CREATE PROCEDURE deleteProductById
+@id INT
+AS
+	DELETE FROM tblProduct WHERE tblProduct.id = @id
+GO
+
+--insert into product
+CREATE PROCEDURE addProduct
+@name VARCHAR(50),
+@price INT,
+@quantity INT,
+@description VARCHAR(50),
+@guarantee VARCHAR(20),
+@images VARCHAR(50),
+@cateId INT,
+@userId INT
+AS
+	INSERT INTO tblProduct(name, price, quantity, description, guarantee, images, category_id, created_by) VALUES (@name, @price, @quantity, @description, @guarantee, @images, @cateId, @userId)
+GO
+
+exec addProduct "RAM", 123123123, 20, "mo ta", "24", "1.jpg", 1, 1

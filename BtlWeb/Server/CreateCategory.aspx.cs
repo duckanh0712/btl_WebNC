@@ -26,7 +26,6 @@ namespace BtlWeb
             using (SqlCommand cm = new SqlCommand())
             {
                 string sname = name_Cat.Text;
-               
                 if (conn != null)
                 {
                     cm.Connection = conn;

@@ -30,7 +30,7 @@ namespace BtlWeb.Server
                 {
                     sqlconn.Open();
                     cmd.Connection = sqlconn;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "getAllProducts";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -39,6 +39,47 @@ namespace BtlWeb.Server
                     GridViewProduct.DataBind();
                 }
             }
+        }
+
+        protected void AddProduct_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CreateProduct.aspx");
+        }
+
+        protected void GridViewProduct_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "xoa")
+            {
+                GridViewRow grv = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int Removerat = grv.RowIndex;
+                String id = GridViewProduct.Rows[Removerat].Cells[0].Text;
+                using (SqlConnection sqlConn = new SqlConnection(conStr))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        sqlConn.Open();
+                        cmd.Connection = sqlConn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "deleteProductById";
+                        cmd.Parameters.Add(new SqlParameter("@id", id));
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                LoadData();
+            }
+            if (e.CommandName == "sua")
+            {
+                GridViewRow grv = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int Removerat = grv.RowIndex;
+                String id = GridViewProduct.Rows[Removerat].Cells[0].Text;
+                Response.Redirect("UpdateCategory.aspx?pId=" + id);
+            }
+        }
+
+        protected void GridViewProduct_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewProduct.PageIndex = e.NewPageIndex;
+            LoadData();
         }
     }
 }

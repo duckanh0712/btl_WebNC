@@ -48,15 +48,11 @@ namespace BtlWeb.Server
 
         protected void GridViewCategory_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
-            if (e.CommandName == "delete")
+            if (e.CommandName == "xoa")
             {
-                //GridViewRow grv = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-                //int Removerat = grv.RowIndex;
-                //int rowIndex = Int32.Parse(e.CommandArgument);
-                int rowIndex = int.Parse(string.Format("{0}", e.CommandArgument));
-                GridViewRow row = GridViewCategory.Rows[rowIndex];
-                int id = Convert.ToInt32(row.Cells[0].Text);
+                GridViewRow grv = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int Removerat = grv.RowIndex;
+                String id = GridViewCategory.Rows[Removerat].Cells[0].Text;
                 using (SqlConnection sqlConn = new SqlConnection(conStr))
                 {
                     using (SqlCommand cmd = new SqlCommand())
@@ -67,28 +63,22 @@ namespace BtlWeb.Server
                         cmd.CommandText = "deleteCategoryById";
                         cmd.Parameters.Add(new SqlParameter("@id", id));
                         cmd.ExecuteNonQuery();
-                        LoadData();
                     }
                 }
                 LoadData();
             }
-           
-        }
-
-        protected void delete_Click(object sender, EventArgs e)
-        {
-            
+            if (e.CommandName == "sua")
+            {
+                GridViewRow grv = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int Removerat = grv.RowIndex;
+                String id = GridViewCategory.Rows[Removerat].Cells[0].Text;
+                Response.Redirect("UpdateCategory.aspx?cateId=" + id);
+            }
         }
 
         protected void AddCategory_Click(object sender, EventArgs e)
         {
-            
             Response.Redirect("CreateCategory.aspx");
-        }
-
-        protected void update_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("UpdateCategory.aspx");
         }
     }
 }
