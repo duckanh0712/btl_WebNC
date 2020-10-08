@@ -12,23 +12,23 @@
     <script src="../Theme/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-        <div class="container" style="margin-top: 30px">
-            <div id="header">
-                <div class="row">
-                    <div class="col-md-12">
-                        <img src="../Public/images/banner1.jpg" />
-                    </div>
+    <div class="container" style="margin-top: 30px">
+        <div id="header">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="../Public/images/banner1.jpg" />
                 </div>
-                <nav class="collapse navbar-collapse" id="TopMenu">
-                    <ul class="nav navbar-nav">
-                        <li><a href="HomePage.aspx" class="btn btn-link"><i class="fas fa-home"></i>&nbspTrang chủ</a></li>
-                        <li><a href="CartPage.aspx" class="btn btn-link"><i class="fab fa-opencart"></i>&nbsp Giỏ hàng (<asp:Label ID="lblCartCount" runat="server" Text="0"></asp:Label>)</a></li>
-                        <li><a href="AboutPage.aspx" class="btn btn-link"><i class="far fa-address-book"></i>&nbsp Liên hệ</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
+            </div>
+            <nav class="collapse navbar-collapse" id="TopMenu">
+                <ul class="nav navbar-nav">
+                    <li><a href="HomePage.aspx" class="btn btn-link"><i class="fas fa-home"></i>&nbspTrang chủ</a></li>
+                    <li><a href="CartPage.aspx" class="btn btn-link"><i class="fab fa-opencart"></i>&nbsp Giỏ hàng (<asp:Label ID="lblCartCount" runat="server" Text="0"></asp:Label>)</a></li>
+                    <li><a href="AboutPage.aspx" class="btn btn-link"><i class="far fa-address-book"></i>&nbsp Liên hệ</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <% if (Session["login"] == null || !(bool)Session["login"])
                         { %>
-                    
+
                     <li><a href="RegisterPage.aspx" class="btn btn-link"><i class="fas fa-user-plus"></i>&nbsp Đăng ký</a></li>
                     <li><a href="LoginPage.aspx" class="btn btn-link"><i class="fas fa-sign-in-alt"></i>&nbsp Đăng nhập</a></li>
                     <%}
@@ -37,52 +37,53 @@
                     <li>
                         <div class="txtUsername">
                             <i class="far fa-user"></i>&nbsp Xin chào
-                           <a href="ProfilePage.aspx" > <asp:Label ID="lblUsername" runat="server" Text=""></asp:Label></a>
+                           <a href="ProfilePage.aspx">
+                               <asp:Label ID="lblUsername" runat="server" Text=""></asp:Label></a>
                         </div>
                     </li>
                     <li><a href="LogoutPage.aspx" class="btn btn-link"><i class="fas fa-sign-out-alt"></i>&nbsp Đăng xuất</a></li>
                     <%} %>
                 </ul>
-                </nav>
-            </div>
-            <div id="body" style="min-height: 350px;">
-                <div class="row">
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
-                </div>
-            </div>
-            <div id="footer">
-                <div class="row">
-                    <div class="col-md-4">
-                        <ul>
-                            <li><a href="#">Tìm hiểu về mua trả góp</a></li>
-                            <li><a href="#">Chính sách bảo hành</a></li>
-                            <li><a href="#">Chính sách đổi trả</a></li>
-                            <li><a href="#">Giao hàng & Thanh toán</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <ul>
-                            <li><a href="#">Giới thiệu cửa hàng</a></li>
-                            <li><a href="#">Tuyển dụng</a></li>
-                            <li><a href="#">Gửi góp ý, khiếu nại</a></li>
-                            <li><a href="#">Tìm cửa hàng gần bạn</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-4">
-                        <ul>
-                            <li><a href="#">Gọi mua hàng 1800.1060 (7:30 - 22:00)</a></li>
-                            <li><a href="#">Gọi khiếu nại 1800.1062 (8:00 - 21:30)</a></li>
-                            <li><a href="#">Gọi bảo hành 1800.1064 (8:00 - 21:00)</a></li>
-                            <li><a href="#">Hỗ trợ kỹ thuật 1800.1763 (7:30 - 22:00)</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row col-md-12">
-                    <div class="col-md-12" id="TextFooter">-----------------------------</div>
-                    <%--<div class="col-md-12" style="text-align:center;">Số người đang online: <%=(int)Application["onlineCounter"] %></div>--%>
-                </div>
+            </nav>
+        </div>
+        <div id="body" style="min-height: 350px;">
+            <div class="row">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
             </div>
         </div>
+        <div id="footer">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                        <li><a href="#">Tìm hiểu về mua trả góp</a></li>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Giao hàng & Thanh toán</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li><a href="#">Giới thiệu cửa hàng</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                        <li><a href="#">Gửi góp ý, khiếu nại</a></li>
+                        <li><a href="#">Tìm cửa hàng gần bạn</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li><a href="#">Gọi mua hàng 1800.1060 (7:30 - 22:00)</a></li>
+                        <li><a href="#">Gọi khiếu nại 1800.1062 (8:00 - 21:30)</a></li>
+                        <li><a href="#">Gọi bảo hành 1800.1064 (8:00 - 21:00)</a></li>
+                        <li><a href="#">Hỗ trợ kỹ thuật 1800.1763 (7:30 - 22:00)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row col-md-12">
+                <div class="col-md-12" id="TextFooter">-----------------------------</div>
+                <%--<div class="col-md-12" style="text-align:center;">Số người đang online: <%=(int)Application["onlineCounter"] %></div>--%>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
