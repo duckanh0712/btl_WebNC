@@ -26,6 +26,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -102,6 +103,7 @@
     <Content Include="Client\LoginPage.aspx" />
     <Content Include="Client\LogoutPage.aspx" />
     <Content Include="Client\RegisterPage.aspx" />
+    <Content Include="Server\CreateCategory.aspx" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
@@ -128,6 +130,8 @@
     <Content Include="Public\images\8.jpg" />
     <Content Include="Public\images\9.jpg" />
     <Content Include="Server\Categories.aspx" />
+    <Content Include="Server\Products.aspx" />
+    <Content Include="Server\UpdateCategory.aspx" />
     <Content Include="Theme\css\bootstrap-theme.css.map" />
     <Content Include="Theme\css\bootstrap-theme.min.css.map" />
     <Content Include="Theme\css\bootstrap.css.map" />
@@ -245,6 +249,13 @@
     <Compile Include="Client\RegisterPage.aspx.designer.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Server\CreateCategory.aspx.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Server\CreateCategory.aspx.designer.cs">
+      <DependentUpon>CreateCategory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -262,6 +273,20 @@
     </Compile>
     <Compile Include="Server\Categories.aspx.designer.cs">
       <DependentUpon>Categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Products.aspx.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Server\Products.aspx.designer.cs">
+      <DependentUpon>Products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\UpdateCategory.aspx.cs">
+      <DependentUpon>UpdateCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Server\UpdateCategory.aspx.designer.cs">
+      <DependentUpon>UpdateCategory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utils\401.aspx.cs">
       <DependentUpon>401.aspx</DependentUpon>
