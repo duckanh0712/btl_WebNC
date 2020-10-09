@@ -103,6 +103,7 @@
     <Content Include="Client\LoginPage.aspx" />
     <Content Include="Client\LogoutPage.aspx" />
     <Content Include="Client\RegisterPage.aspx" />
+    <Content Include="Public\css\CreateProduct.css" />
     <Content Include="Server\CreateCategory.aspx" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
@@ -312,6 +313,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Public\script\" />
     <Folder Include="Theme\js\esm\" />
     <Folder Include="Theme\js\umd\" />
   </ItemGroup>
