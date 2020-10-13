@@ -9,7 +9,7 @@
     <link href="../Theme/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../Theme/css/bootstrap.css" rel="stylesheet" />
     <link href="../Public/css/ClientMaster.css" rel="stylesheet" />
-    <script type="text/javascript" src="../Theme/js/jquery-3.3.1.min.js"></script>
+    <script src="../Theme/js/jquery-3.3.1.min.js"></script>
 </head>
 <body>
     <div class="container" style="margin-top: 30px">
@@ -26,7 +26,7 @@
                     <li><a href="AboutPage.aspx" class="btn btn-link"><i class="far fa-address-book"></i>&nbsp Liên hệ</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <% if (Session["login"] == null || !(bool)Session["login"])
+                    <% if (Session["isLogin"] == null || (bool)Session["isLogin"] == false)
                         { %>
 
                     <li><a href="RegisterPage.aspx" class="btn btn-link"><i class="fas fa-user-plus"></i>&nbsp Đăng ký</a></li>
@@ -81,7 +81,6 @@
             </div>
             <div class="row col-md-12">
                 <div class="col-md-12" id="TextFooter">-----------------------------</div>
-                <%--<div class="col-md-12" style="text-align:center;">Số người đang online: <%=(int)Application["onlineCounter"] %></div>--%>
             </div>
         </div>
     </div>

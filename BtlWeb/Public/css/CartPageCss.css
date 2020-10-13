@@ -1,0 +1,25 @@
+﻿#formCarts table tr td{
+    line-height:150px;
+    padding:10px;
+
+}
+#formCarts table tr{
+
+}
+
+#formCarts table tr td img{
+    height: 150px; width: 200px;
+    padding:5px;
+}
+
+#formCarts table tr th, td{
+    text-align:center;
+}
+
+.price {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 25px;
+    font-style: italic;
+    text-align: center;
+}

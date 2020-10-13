@@ -7,13 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace BtlWeb.Client
 {
-    public partial class Client : System.Web.UI.MasterPage
+    public partial class ProfilePage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((bool)Session["isLogin"])
-                lblUsername.Text = (String)Session["name"];
-                lblCartCount.Text = ((int)Session["cartsCount"]).ToString();
+
         }
     }
 }

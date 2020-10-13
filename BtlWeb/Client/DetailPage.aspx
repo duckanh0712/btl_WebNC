@@ -70,7 +70,7 @@
                             <div class="price">
                                 <asp:Label ID="lblPrices" runat="server" Text=""></asp:Label>
                             </div>
-                            <asp:Button ID="btnAddToCarts" runat="server" Text="Thêm vào giỏ hàng" class="btn btn-primary btn-lg btn-block m-t" OnClick="btnAddToCarts_Click" />
+                            <asp:Button ID="btnAddToCarts" runat="server" CommandArgument='<%# Eval("id")%>' Text="Thêm vào giỏ hàng" class="btn btn-primary btn-lg btn-block m-t" OnClick="btnAddToCarts_Click" />
                         </div>
                     </div>
                     <div class="row">

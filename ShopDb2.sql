@@ -105,11 +105,25 @@ AS
 GO
 
 --get product by id
+CREATE PROCEDURE getColProductById
+@id INT
+AS
+BEGIN
+	DECLARE @idr INT, @namer VARCHAR(20)
+		SELECT @idr=id, @namer=name FROM tblProduct WHERE tblProduct.id = @id
+	SELECT @idr,@namer
+END
+GO
+
 CREATE PROCEDURE getProduceById
 @id INT
 AS
-	SELECT * FROM tblProduct WHERE tblProduct.id = @id;
+BEGIN
+	SELECT * FROM tblProduct WHERE tblProduct.id = @id
+END
 GO
+
+SELECT * FROM tblProduct WHERE tblProduct.id = 1
 
 --get all category
 CREATE PROCEDURE getAllCategories
@@ -143,9 +157,9 @@ GO
 CREATE PROCEDURE getCategoryById
 @id INT
 AS
-	BEGIN
-		SELECT name FROM tblCategory WHERE tblCategory.id = @id
-	END
+	DECLARE @namereturn VARCHAR(20)
+		SELECT @namereturn=name FROM tblCategory WHERE tblCategory.id = @id
+	SELECT @namereturn AS name
 GO
 
 --delete product by id
@@ -169,4 +183,21 @@ AS
 	INSERT INTO tblProduct(name, price, quantity, description, guarantee, images, category_id, created_by) VALUES (@name, @price, @quantity, @description, @guarantee, @images, @cateId, @userId)
 GO
 
-exec addProduct "RAM", 123123123, 20, "mo ta", "24", "1.jpg", 1, 1
+--exec addProduct "RAM", 123123123, 20, "mo ta", "24", "1.jpg", 1, 1
+
+CREATE PROCEDURE getUserByUsername
+@username VARCHAR(20)
+AS
+	SELECT * FROM tblUser WHERE tblUser.username = @username
+GO
+
+exec getUserByUsername 'leequang198'
+
+CREATE PROCEDURE addToCart
+@userId INT,
+@date DATE
+AS
+	INSERT INTO tblCart(created_date, created_by) VALUES(@date, @userId)
+GO
+
+--exec addToCart 1, '2020-11-11'

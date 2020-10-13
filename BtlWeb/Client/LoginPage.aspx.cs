@@ -21,6 +21,8 @@ namespace BtlWeb.Client
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
+            Session["isLogin"] = true;
+            Session["name"] = txtUsername.Text;
             string selectuser = "SELECT * FROM tblUser WHERE username='" + txtUsername.Text + "' and password='" + txtPassword.Text + "'and role='" + "ADMIN" + "'";
             SqlDataAdapter data = new SqlDataAdapter(selectuser, conStr);
             DataTable dataTable = new DataTable();
@@ -43,8 +45,6 @@ namespace BtlWeb.Client
                         cmd.Parameters.Add(new SqlParameter("@password", txtPassword.Text));
                         cmd.ExecuteNonQuery();
                         Response.Redirect("HomePage.aspx");
-                        Session["login"] = true;
-                        Session["username"] = txtUsername.Text;
                     }
                 }
             }

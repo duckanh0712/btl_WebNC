@@ -98,12 +98,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Client\AboutPage.aspx" />
+    <Content Include="Client\BillPage.aspx" />
+    <Content Include="Client\BuySuccessPage.aspx" />
+    <Content Include="Client\CartPage.aspx" />
     <Content Include="Client\DetailPage.aspx" />
     <Content Include="Client\HomePage.aspx" />
     <Content Include="Client\LoginPage.aspx" />
     <Content Include="Client\LogoutPage.aspx" />
+    <Content Include="Client\ProfilePage.aspx" />
     <Content Include="Client\RegisterPage.aspx" />
-    <Content Include="Public\css\CreateProduct.css" />
+    <Content Include="Public\css\BillPageCss.css" />
+    <Content Include="Public\css\CartPageCss.css" />
+    <Content Include="Public\css\ProfilePageCss.css" />
+    <Content Include="Public\images\add.png" />
+    <Content Include="Public\images\carts-empty.jpg" />
+    <Content Include="Public\images\minus.png" />
+    <Content Include="Public\images\thanksoder.jpg" />
     <Content Include="Server\CreateCategory.aspx" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
@@ -209,6 +219,27 @@
     <Compile Include="Client\AboutPage.aspx.designer.cs">
       <DependentUpon>AboutPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Client\BillPage.aspx.cs">
+      <DependentUpon>BillPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\BillPage.aspx.designer.cs">
+      <DependentUpon>BillPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\BuySuccessPage.aspx.cs">
+      <DependentUpon>BuySuccessPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\BuySuccessPage.aspx.designer.cs">
+      <DependentUpon>BuySuccessPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\CartPage.aspx.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\CartPage.aspx.designer.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Client\Client.Master.cs">
       <DependentUpon>Client.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -244,6 +275,13 @@
     <Compile Include="Client\LogoutPage.aspx.designer.cs">
       <DependentUpon>LogoutPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Client\ProfilePage.aspx.cs">
+      <DependentUpon>ProfilePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\ProfilePage.aspx.designer.cs">
+      <DependentUpon>ProfilePage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Client\RegisterPage.aspx.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,6 +289,8 @@
     <Compile Include="Client\RegisterPage.aspx.designer.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomProduct.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Server\CreateCategory.aspx.cs">
       <DependentUpon>CreateCategory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,7 +353,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Public\script\" />
     <Folder Include="Theme\js\esm\" />
     <Folder Include="Theme\js\umd\" />
   </ItemGroup>

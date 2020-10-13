@@ -31,7 +31,11 @@ namespace BtlWeb.Server
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "getCategoryById";
                     cmd.Parameters.Add(new SqlParameter("@id", id));
-                    cmd.ExecuteNonQuery();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        name.Text = reader[1].ToString();
+                    }
                 }
             }
         }

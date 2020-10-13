@@ -17,8 +17,11 @@ namespace BtlWeb
 
         protected void Session_Start(object sender, EventArgs e)
         {
-            Session["login"] = false;
-            Session["username"] = "";
+            Session["isLogin"] = false;
+            Session["name"] = "";
+            Session["cartsCount"] = 0;
+            Session["currentUserId"] = 0;
+            Session["carts"] = new List<CustomProduct>();
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

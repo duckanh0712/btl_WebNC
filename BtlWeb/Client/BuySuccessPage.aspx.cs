@@ -7,18 +7,15 @@ using System.Web.UI.WebControls;
 
 namespace BtlWeb.Client
 {
-    public partial class LogoutPage : System.Web.UI.Page
+    public partial class BuySuccessPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!(bool)Session["isLogin"])
             {
-                Response.Write("<script>alert('Bạn chưa đăng nhập');window.location='http://localhost:54996/Client/LoginPage.aspx';</script>");
+                Response.Write("<script>alert('Bạn chưa đăng nhập');window.location='http://localhost:54996/LoginPage.aspx';</script>");
             }
-            Session["isLogin"] = false;
-            Session["name"] = "";
-            Response.Write("<script> alert('Bạn đã đăng xuất thành công');" +
-                   "window.location='http://localhost:54996/Client/HomePage.aspx';</script>");
+            Session["carts"] = new List<CustomProduct>();
         }
 
         protected void btnHomePage_Click(object sender, EventArgs e)
