@@ -5,9 +5,10 @@
     <div class="col-md-offset-3">
         Các thành viên:<br />
         <div class="col-md-offset-1">
-            + Lê Anh Quang - 16A02<br />
-            + Nguyễn Văn Tính - 15A04<br />
-            + Nguyễn Phương Nam - 15A01<br />
+            + Lê Anh Quang <br />
+            + Khuất Đức Khánh <br />  
+            + Quốc Khánh Khánh <br />    
+            + Nguyễn Đăng Đạt <br />    
         </div>
         Đề tài: Xây dựng website bán hàng gồm các chức năng:<br />
         <div class="col-md-offset-1">
