@@ -58,12 +58,21 @@ namespace BtlWeb.Client {
         protected global::System.Web.UI.WebControls.Button btnCanceSearch;
         
         /// <summary>
-        /// RepeaterProduct control.
+        /// ListViewProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterProduct;
+        protected global::System.Web.UI.WebControls.ListView ListViewProduct;
+        
+        /// <summary>
+        /// dtpArticles control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager dtpArticles;
     }
 }

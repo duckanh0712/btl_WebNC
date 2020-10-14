@@ -39,7 +39,7 @@
                     <%--<h4 class="col-md-3">Danh mục sản phẩm</h4>--%>
                     <asp:Button ID="btnCanceSearch" runat="server" Text="Bỏ lọc sản phẩm" class="btn btn-default col-md-3" Visible="false" OnClick="btnCanceSearch_Click" Style="margin-top: 4px;" />
                 </div>
-                <asp:Repeater ID="RepeaterProduct" runat="server">
+                <asp:ListView ID="ListViewProduct" runat="server" OnPagePropertiesChanging="ListViewProduct_PagePropertiesChanging">
                     <ItemTemplate>
                         <div class="item col-md-4 col-sm-5">
                             <div class="row" id="ContentProduct">
@@ -53,7 +53,21 @@
                             </div>
                         </div>
                     </ItemTemplate>
-                </asp:Repeater>
+                </asp:ListView>
+            </div>
+            <div class="col-md-12">
+                <div class="row page-center">
+                    <asp:DataPager ID="dtpArticles" runat="server" PagedControlID="ListViewProduct" PageSize="5" ClientIDMode="Static">
+                        <Fields>
+                            <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="true" ShowPreviousPageButton="true"
+                                ShowNextPageButton="false" ButtonCssClass="prev-page text-info" />
+                            <asp:NumericPagerField ButtonType="Link" CurrentPageLabelCssClass="btn-cur-page text-info"
+                                NumericButtonCssClass="btn-num-page text-success" />
+                            <asp:NextPreviousPagerField ButtonType="Link" ShowLastPageButton="true" ShowNextPageButton="true"
+                                ShowPreviousPageButton="false" ButtonCssClass="next-page text-info" />
+                        </Fields>
+                    </asp:DataPager>
+                </div>
             </div>
         </form>
     </div>

@@ -74,3 +74,7 @@ ul li fieldset{
 
 a.imjusttext{ color: #4a4a4a; text-decoration: none; }
 a.imjusttext:hover { text-decoration: none; color: #ff2b2b;}
+
+.page-center {
+    text-align: center;
+}

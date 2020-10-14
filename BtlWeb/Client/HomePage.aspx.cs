@@ -43,25 +43,19 @@ namespace BtlWeb.Client
 
         private void LoadData()
         {
-            DataTable tblProduct = getProducts();
-            RepeaterProduct.DataSource = tblProduct;
-            RepeaterProduct.DataBind();
-        }
-
-        private DataTable getProducts()
-        {
-            string procName = "getAllProducts";
-            using (SqlConnection cnn = new SqlConnection(conStr))
+            using (SqlConnection sqlConn = new SqlConnection(conStr))
             {
-                using (SqlCommand cmd = new SqlCommand(procName, cnn))
+                using (SqlCommand cmd = new SqlCommand())
                 {
+                    sqlConn.Open();
+                    cmd.Connection = sqlConn;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        DataTable t = new DataTable();
-                        da.Fill(t);
-                        return t;
-                    }
+                    cmd.CommandText = "getAllProducts";
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    ListViewProduct.DataSource = dt;
+                    ListViewProduct.DataBind();
                 }
             }
         }
@@ -83,8 +77,8 @@ namespace BtlWeb.Client
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-                        RepeaterProduct.DataSource = dt;
-                        RepeaterProduct.DataBind();
+                        ListViewProduct.DataSource = dt;
+                        ListViewProduct.DataBind();
                     }
                 }
             }
@@ -157,10 +151,16 @@ namespace BtlWeb.Client
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    RepeaterProduct.DataSource = dt;
-                    RepeaterProduct.DataBind();
+                    ListViewProduct.DataSource = dt;
+                    ListViewProduct.DataBind();
                 }
             }
+        }
+
+        protected void ListViewProduct_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            dtpArticles.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+            LoadData();
         }
     }
 }
