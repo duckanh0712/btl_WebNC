@@ -11,7 +11,7 @@
                 <div class="form-group row">
                     <label for="<%=txtFullName.ClientID%>" class="col-md-2 control-label">Họ và tên </label>
                     <div class="col-md-5">
-                        <asp:TextBox required ID="txtFullName" runat="server" class="form-control" onchange="test(this);" placeholder="Họ và tên"></asp:TextBox>
+                        <asp:TextBox required ID="txtFullName" runat="server" class="form-control" onchange="test(this)" placeholder="Họ và tên"></asp:TextBox>
                     </div>
                     <span id="err<%=txtFullName.ClientID%>" class="help-block col-md-4" text=""></span>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="form-group row">
                     <label for="<%=txtPhoneNumber.ClientID%>" class="col-md-2 control-label">Số điện thoại</label>
                     <div class="col-md-5">
-                        <asp:TextBox required ID="txtPhoneNumber" class="form-control" runat="server" placeholder="Số điện thoại"></asp:TextBox>
+                        <asp:TextBox required ID="txtPhoneNumber" class="form-control" runat="server" onChange="validatePhoneNumber()" placeholder="Số điện thoại"></asp:TextBox>
                     </div>
                     <span id="errPhoneNumber" class="help-block col-md-4" text=""></span>
                 </div>
@@ -54,7 +54,7 @@
                 <div class="form-group row">
                     <label for="<%=txtEmail.ClientID %>" class="col-md-2 control-label">Email</label>
                     <div class="col-md-5">
-                        <asp:TextBox required ID="txtEmail" runat="server" class="form-control" placeholder="Email" type="email"></asp:TextBox>
+                        <asp:TextBox required ID="txtEmail" runat="server" class="form-control" onChange="validateEmail()" placeholder="Email" type="email"></asp:TextBox>
                     </div>
                     <asp:Label ID="errEmail" class="col-md-4 control-label errorMsg" runat="server" Text=""></asp:Label>
                 </div>
@@ -108,30 +108,63 @@
         </form>
         <!-- Modal -->
     </div>
-   <script type="text/javascript">
+   <script type="text/javascript"> 
+       
+       <%--function validateUsername() {
+           var username = document.getElementById('<%=txtUsername.ClientID %>');
+            var usernameRegex = /^[a-zA-Z0-9]+$/;
+            if (!usernameRegex.test(username.value)) {
+                username.parentElement.parentElement.classList.add("has-error");
+                document.getElementById("<%=errUsername.ClientID%>").innerHTML = "Tài khoản chỉ bao gồm các ký tự  a - z, A - Z, 0 - 9";
+                username.focus();
+                return false;
+            } else if (!(username.value.trim().length >= 6 && username.value.trim().length <= 30)) {
+                username.parentElement.parentElement.classList.add("has-error");
+                document.getElementById('<%=errUsername.ClientID%>').innerHTML = "Tài khoản từ 6 - 30 ký tự";
+                username.focus();
+                return false;
+            } else {
+                username.parentElement.parentElement.classList.remove("has-error");
+                username.parentElement.parentElement.classList.add("has-success");
+                document.getElementById('<%=errUsername.ClientID%>').innerHTML = "";
+               return true;
+           }
+
+       }--%>
+
        function validatePassword() {
 
-           //(?=.*\d)          // should contain at least one digit
-           //(?=.*[a-z])       // should contain at least one lower case
-           //(?=.*[A-Z])       // should contain at least one upper case
-           //[a-zA-Z0-9]{8,}   // should contain at least 8 from the mentioned characters
-           //var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/; 1 chua hoa,1 chu thuong, 1 so, >8 ki tu
-           //var passwordRegex = /^[a-zA-Z0-9]{8,}$/; it nhat 8 ki tu
+
            var password = document.getElementById('<%=txtPassword.ClientID%>');
-           var passwordRegex = /^[a-zA-Z0-9]+$/; //Tài khoản chỉ bao gồm các ký tự  a - z, A - Z, 0 - 9
+           var passwordRegex = /^[a-zA-Z0-9]{6,}$/; 
            if (!passwordRegex.test(password.value)) {
-               document.getElementById('errPassword').innerHTML = "Mật khẩu tối thiểu từ 8 ký tự";
+               password.parentElement.parentElement.classList.add("has-error");
+               document.getElementById('errPassword').innerHTML = "Mật khẩu tối thiểu từ 6 ký tự";
                password.focus();
                return false;
+           } else {
+               password.parentElement.parentElement.classList.remove("has-error");
+               password.parentElement.parentElement.classList.add("has-success");
+               document.getElementById('errPassword').innerHTML = "";
+               return true;
            }
        }
+
        function validatePassword1() {
-        var password1 = document.getElementById('<%=txtPassword.ClientID%>');
+
+
+           var password1 = document.getElementById('<%=txtPassword.ClientID%>');
         var password = document.getElementById('<%=txtPassword2.ClientID%>');
-          if (password.value.trim() != password1.value.trim()) {
+            if (password.value.trim() != password1.value.trim()) {
+               password.parentElement.parentElement.classList.add("has-error");
                document.getElementById('errPassword1').innerHTML = "Mật khẩu nhập lại không đúng";
                password.focus();
                return false;
+           } else {
+               password.parentElement.parentElement.classList.remove("has-error");
+               password.parentElement.parentElement.classList.add("has-success");
+               document.getElementById('errPassword1').innerHTML = "";
+               return true;
            }
        }
 
@@ -140,34 +173,27 @@
            var phoneNumber = document.getElementById('<%=txtPhoneNumber.ClientID%>');
            if (!regexPhoneNumber.test(phoneNumber.value)) {
                document.getElementById('errPhoneNumber').innerHTML = "Số điện thoại không đúng";
+               phoneNumber.parentElement.parentElement.classList.add("has-error");
                phoneNumber.focus();
                return false;
+           } else {
+               document.getElementById('errPhoneNumber').innerHTML = "";
+               phoneNumber.parentElement.parentElement.classList.remove("has-error");
+               phoneNumber.parentElement.parentElement.classList.add("has-success");
+               return true;
            }
        }
-       //function validateAge() {
-
-       //    var age = document.getElementsByName("dateDob").value;
-       //    console.log(age);
-       //     year = new Date(age)
-       //     console.log(year.getfullyear());
-       //     if (year.getfullyear() >= 2002) {
-             
-       //         document.getElementById('errPhoneNumber').innerHTML = "Số điện thoại không đúng";
-       //         phoneNumber.parentElement.parentElement.classList.add("has-error");
-       //         phoneNumber.focus();
-       //         return false;
-       //     } else {
-       //         document.getElementById('errPhoneNumber').innerHTML = "";
-       //         phoneNumber.parentElement.parentElement.classList.remove("has-error");
-       //         phoneNumber.parentElement.parentElement.classList.add("has-success");
-       //         return true;
-       //     }
-       // }
        function checkNotNull(id) {
            var value = document.getElementById(id);
            if (value.value.trim().length == 0) {
                document.getElementById("err" + id).innerHTML = "Không được bỏ trống trường giá trị";
+               value.parentElement.parentElement.classList.add("has-error");
                return false;
+           } else {
+               document.getElementById("err" + id).innerHTML = "";
+               value.parentElement.parentElement.classList.remove("has-error");
+               value.parentElement.parentElement.classList.add("has-success");
+               return true;
            }
        }
 
@@ -176,31 +202,21 @@
             var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
             if (email.value.trim().length == 0) {
                 document.getElementById('<%=errEmail.ClientID%>').innerHTML = "Email không được để trống";
+                email.parentElement.parentElement.classList.add("has-error");
                 email.focus();
                 return false;
             } else if (!regexEmail.test(email.value)) {
                 document.getElementById('<%=errEmail.ClientID%>').innerHTML = "Email không đúng định dạng <br /> Ví dụ: example@email.com";
+                email.parentElement.parentElement.classList.add("has-error");
                 email.focus();
                 return false;
-            } 
+            } else {
+                document.getElementById('<%=errEmail.ClientID%>').innerHTML = "";
+                email.parentElement.parentElement.classList.remove("has-error");
+                email.parentElement.parentElement.classList.add("has-success");
+                return true;
+            }
     }
 
-   <%-- $(document).ready(
-        function () {
-            $("#<%=btnSubmit.ClientID%>").click(function () {
-                if (!checkNotNull("<%=txtFullName.ClientID%>")) return false;
-                if (!checkNotNull("<%=dateDob.ClientID%>")) return false;
-                if (!checkNotNull("<%=listGender.ClientID%>")) return false;
-                if (!checkNotNull("<%=txtAddress.ClientID%>")) return false;
-                if (!validatePhoneNumber()) return false;
-                if (!validateEmail()) return false;
-                //if(!validateAge()) return false;
-                if (!validateUsername()) return false;
-                if (!validatePassword()) return false;
-                if (!validatePassword1()) return false;
-                return true;
-            });
-        }
-    );--%>
-   </script>
+    </script>
 </asp:Content>
