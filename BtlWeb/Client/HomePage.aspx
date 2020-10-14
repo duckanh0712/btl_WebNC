@@ -12,32 +12,25 @@
                             <legend>
                                 <h5>Tên sản phẩm</h5>
                             </legend>
-                            <%--<asp:input type="text" class="form-control" placeholder="Tên sản phẩm">--%>
                             <asp:TextBox ID="txtNameProduct" runat="server" class="form-control" placeholder="Tên sản phẩm"></asp:TextBox>
+                            <asp:Button ID="btnSearch" class="btn btn-default m-t-10" runat="server" Text="Tìm Kiếm" OnClick="btnSearch_Click" />
                         </fieldset>
                     </li>
-
                     <li>
                         <fieldset>
                             <legend>
-                                <h5>Giá</h5>
+                                <h4 style="font-weight: bold;">Danh mục sản phẩm</h4>
+                                <ul class="category-item">
+                                    <asp:Repeater ID="RepeaterCategory" runat="server">
+                                        <ItemTemplate>
+                                            <li>
+                                                <asp:LinkButton ID="LinkButtonItem" CssClass="imjusttext" runat="server" CommandArgument='<%# Eval("id")%>' OnClick="LinkButtonItem_Click">- <%# Eval("name")%></asp:LinkButton>
+                                            </li>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
+                                </ul>
                             </legend>
-                            <asp:RadioButtonList ID="rbPrice" runat="server" Style="font-size: 14px;">
-                                <asp:ListItem class="checkbox" runat="server" Value="0">
-                                    Dưới 5 triệu</asp:ListItem>
-                                <asp:ListItem class="checkbox" runat="server" Value="5">
-                                    Từ 5 - 10 triệu</asp:ListItem>
-                                <asp:ListItem class="checkbox" runat="server" Value="10">
-                                    Từ 10 - 15 triệu</asp:ListItem>
-                                <asp:ListItem class="checkbox" runat="server" Value="15">
-                                    Từ 15 - 20 triệu</asp:ListItem>
-                                <asp:ListItem class="checkbox" runat="server" Value="20">
-                                    Trên 20 triệu</asp:ListItem>
-                            </asp:RadioButtonList>
                         </fieldset>
-                    </li>
-                    <li>
-                        <asp:Button ID="btnSearch" class="btn btn-default" runat="server" Text="Tìm Kiếm" OnClick="btnSearch_Click" />
                     </li>
                 </ul>
             </div>

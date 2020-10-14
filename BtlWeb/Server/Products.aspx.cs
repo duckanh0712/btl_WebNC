@@ -72,7 +72,7 @@ namespace BtlWeb.Server
                 GridViewRow grv = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int Removerat = grv.RowIndex;
                 String id = GridViewProduct.Rows[Removerat].Cells[0].Text;
-                Response.Redirect("UpdateCategory.aspx?pId=" + id);
+                Response.Redirect("UpdateProduct.aspx?pId=" + id);
             }
         }
 

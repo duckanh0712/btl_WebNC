@@ -17,7 +17,6 @@
                         <asp:BoundField DataField="name" HeaderText="Name" />
                         <asp:BoundField DataField="price" HeaderText="Price" />
                         <asp:BoundField DataField="quantity" HeaderText="Quantity" />
-                        <asp:BoundField DataField="name" HeaderText="Name" />
                         <asp:BoundField DataField="guarantee" HeaderText="Guarantee" />
                         <asp:BoundField DataField="description" HeaderText="Description" />
                         <asp:BoundField DataField="images" HeaderText="Images" />

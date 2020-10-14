@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace BtlWeb.Server
 {
-    public partial class CreateProduct : System.Web.UI.Page
+    public partial class UpdateProduct : System.Web.UI.Page
     {
         string conStr = ConfigurationManager.ConnectionStrings["myCnnStr"] + "";
         protected void Page_Load(object sender, EventArgs e)
@@ -21,13 +21,14 @@ namespace BtlWeb.Server
 
         private void LoadData()
         {
-            using (SqlConnection sqlconn = new SqlConnection(conStr))
+            string id = Request.QueryString["pId"].ToString();
+            using (SqlConnection sqlConn = new SqlConnection(conStr))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    sqlconn.Open();
-                    cmd.Connection = sqlconn;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    sqlConn.Open();
+                    cmd.Connection = sqlConn;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.CommandText = "getAllCategories";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -37,13 +38,24 @@ namespace BtlWeb.Server
                     DropDownListCate.DataTextField = "name";
                     DropDownListCate.DataValueField = "id";
                     DropDownListCate.DataBind();
+                    cmd.CommandText = "getProductById";
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Name.Text = reader[1].ToString();
+                        Description.Text = reader[3].ToString();
+                        Price.Text = reader[4].ToString();
+                        Quantity.Text = reader[5].ToString();
+                    }
                 }
             }
         }
 
-        protected void addBtn_Click(object sender, EventArgs e)
+        protected void updateBtn_Click(object sender, EventArgs e)
         {
             string userId = (string)Session["currentUserId"];
+            string id = Request.QueryString["pId"].ToString();
             if (FileUploadImages.HasFile)
             {
                 FileUploadImages.SaveAs(Server.MapPath("/Public/images/" + FileUploadImages.FileName));
@@ -52,11 +64,11 @@ namespace BtlWeb.Server
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-
                     sqlConn.Open();
                     cmd.Connection = sqlConn;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "addProduct";
+                    cmd.CommandText = "updateProduct";
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
                     cmd.Parameters.Add(new SqlParameter("@name", Name.Text));
                     cmd.Parameters.Add(new SqlParameter("@price", Price.Text));
                     cmd.Parameters.Add(new SqlParameter("@quantity", Quantity.Text));

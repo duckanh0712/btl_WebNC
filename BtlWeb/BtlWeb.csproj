@@ -124,26 +124,11 @@
     <Content Include="Public\css\DetailPage.css" />
     <Content Include="Public\css\GridStyle.css" />
     <Content Include="Public\css\RegisterPage.css" />
-    <Content Include="Public\images\1.jpg" />
-    <Content Include="Public\images\10.jpg" />
-    <Content Include="Public\images\11.jpg" />
-    <Content Include="Public\images\12.jpg" />
-    <Content Include="Public\images\13.jpg" />
-    <Content Include="Public\images\14.jpg" />
-    <Content Include="Public\images\15.jpg" />
-    <Content Include="Public\images\16.jpg" />
-    <Content Include="Public\images\2.jpg" />
-    <Content Include="Public\images\3.jpg" />
-    <Content Include="Public\images\4.jpg" />
-    <Content Include="Public\images\5.jpg" />
-    <Content Include="Public\images\6.jpg" />
-    <Content Include="Public\images\7.jpg" />
-    <Content Include="Public\images\8.jpg" />
-    <Content Include="Public\images\9.jpg" />
     <Content Include="Server\Categories.aspx" />
     <Content Include="Server\CreateProduct.aspx" />
     <Content Include="Server\Products.aspx" />
     <Content Include="Server\UpdateCategory.aspx" />
+    <Content Include="Server\UpdateProduct.aspx" />
     <Content Include="Theme\css\bootstrap-theme.css.map" />
     <Content Include="Theme\css\bootstrap-theme.min.css.map" />
     <Content Include="Theme\css\bootstrap.css.map" />
@@ -336,6 +321,13 @@
     </Compile>
     <Compile Include="Server\UpdateCategory.aspx.designer.cs">
       <DependentUpon>UpdateCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\UpdateProduct.aspx.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Server\UpdateProduct.aspx.designer.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utils\401.aspx.cs">
       <DependentUpon>401.aspx</DependentUpon>

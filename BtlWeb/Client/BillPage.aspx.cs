@@ -70,6 +70,7 @@ namespace BtlWeb.Client
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             DateTime localDate = DateTime.Now;
+            string userId = (string)Session["currentUserId"];
             if ((bool)Session["isLogin"])
             {
                 using (SqlConnection sqlConn = new SqlConnection(conStr))
@@ -80,7 +81,7 @@ namespace BtlWeb.Client
                         cmd.Connection = sqlConn;
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "addToCart";
-                        cmd.Parameters.Add(new SqlParameter("@userId", 2));
+                        cmd.Parameters.Add(new SqlParameter("@userId", userId));
                         cmd.Parameters.Add(new SqlParameter("@date", localDate));
                         cmd.ExecuteNonQuery();
                     }

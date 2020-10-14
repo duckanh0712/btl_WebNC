@@ -30,7 +30,7 @@ namespace BtlWeb.Client
                     sqlconn.Open();
                     cmd.Connection = sqlconn;
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.CommandText = "getProduceById";
+                    cmd.CommandText = "getProductById";
                     cmd.Parameters.Add(new SqlParameter("@id", id));
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -56,7 +56,7 @@ namespace BtlWeb.Client
                     sqlConn.Open();
                     cmd.Connection = sqlConn;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "getProduceById";
+                    cmd.CommandText = "getProductById";
                     cmd.Parameters.Add(new SqlParameter("@id", id));
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())

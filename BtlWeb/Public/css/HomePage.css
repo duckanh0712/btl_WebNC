@@ -51,3 +51,26 @@ ul li fieldset{
     font-weight: bold;
     color: #4a4a4a;
 }
+
+.m-t-10 {
+    margin-top: 10px;
+}
+
+.category-item {
+    padding: 0px;
+}
+
+.category-item li {
+    font-size: 14px;
+    font-weight: bold;
+    color: #4a4a4a;
+    margin: 12px 0px;
+}
+
+.category-item li:hover {
+    color: #ff2b2b;
+    cursor: pointer;
+}
+
+a.imjusttext{ color: #4a4a4a; text-decoration: none; }
+a.imjusttext:hover { text-decoration: none; color: #ff2b2b;}

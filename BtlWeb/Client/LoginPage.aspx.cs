@@ -21,18 +21,15 @@ namespace BtlWeb.Client
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            Session["isLogin"] = true;
-            Session["name"] = txtUsername.Text;
-            string selectuser = "SELECT * FROM tblUser WHERE username='" + txtUsername.Text + "' and password='" + txtPassword.Text + "'and role='" + "ADMIN" + "'";
-            SqlDataAdapter data = new SqlDataAdapter(selectuser, conStr);
-            DataTable dataTable = new DataTable();
-            data.Fill(dataTable);
-            if (dataTable.Rows.Count > 0)
+            if(checkUsernameLogin(txtUsername.Text, txtPassword.Text))
             {
-                Response.Redirect("/Server/Categories.aspx");
-            }
-            else
-            {
+                Session["isLogin"] = true;
+                Session["name"] = txtUsername.Text;
+                string selectuser = "SELECT * FROM tblUser WHERE username='" + txtUsername.Text + "' and password='" + txtPassword.Text + "'and role='" + "ADMIN" + "'";
+                SqlDataAdapter data = new SqlDataAdapter(selectuser, conStr);
+                DataTable dataTable = new DataTable();
+                data.Fill(dataTable);
+
                 using (SqlConnection sqlConn = new SqlConnection(conStr))
                 {
                     using (SqlCommand cmd = new SqlCommand())
@@ -40,11 +37,66 @@ namespace BtlWeb.Client
                         sqlConn.Open();
                         cmd.Connection = sqlConn;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.CommandText = "login";
+                        cmd.CommandText = "getUserByUsername";
                         cmd.Parameters.Add(new SqlParameter("@username", txtUsername.Text));
-                        cmd.Parameters.Add(new SqlParameter("@password", txtPassword.Text));
-                        cmd.ExecuteNonQuery();
-                        Response.Redirect("HomePage.aspx");
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            Session["currentUserId"] = reader[0].ToString();
+                        }
+                    }
+                }
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    Response.Redirect("/Server/Categories.aspx");
+                }
+                else
+                {
+                    using (SqlConnection sqlConn = new SqlConnection(conStr))
+                    {
+                        using (SqlCommand cmd = new SqlCommand())
+                        {
+                            sqlConn.Open();
+                            cmd.Connection = sqlConn;
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.CommandText = "login";
+                            cmd.Parameters.Add(new SqlParameter("@username", txtUsername.Text));
+                            cmd.Parameters.Add(new SqlParameter("@password", txtPassword.Text));
+                            cmd.ExecuteNonQuery();
+                            Response.Redirect("HomePage.aspx");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Response.Write("<script> alert('Tài khoản hoặc mật khẩu không đúng ')</script>");
+            }
+
+            
+        }
+
+        private bool checkUsernameLogin(string username, string password)
+        {
+            using (SqlConnection sqlConn = new SqlConnection(conStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    sqlConn.Open();
+                    cmd.Connection = sqlConn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "checkLogin";
+                    cmd.Parameters.Add(new SqlParameter("@username", username));
+                    cmd.Parameters.Add(new SqlParameter("@password", password));
+                    int ReturnCode = (int)cmd.ExecuteScalar();
+                    if (ReturnCode == -1)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
                     }
                 }
             }

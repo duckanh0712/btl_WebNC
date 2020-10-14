@@ -17,11 +17,31 @@ namespace BtlWeb.Client
         {
             if (!Page.IsPostBack)
             {
-                LoadProduct();
+                LoadData();
+                LoadCategory();
             }
         }
 
-        private void LoadProduct()
+        private void LoadCategory()
+        {
+            using (SqlConnection sqlconn = new SqlConnection(conStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    sqlconn.Open();
+                    cmd.Connection = sqlconn;
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = "getAllCategories";
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    RepeaterCategory.DataSource = dt;
+                    RepeaterCategory.DataBind();
+                }
+            }
+        }
+
+        private void LoadData()
         {
             DataTable tblProduct = getProducts();
             RepeaterProduct.DataSource = tblProduct;
@@ -48,7 +68,26 @@ namespace BtlWeb.Client
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            if (txtNameProduct.Text.Trim() != null || txtNameProduct.Text.Trim().Count() > 0)
+            {
+                string name = txtNameProduct.Text.Trim();
+                using (SqlConnection sqlConn = new SqlConnection(conStr))
+                {
+                    using (SqlCommand cmd = new SqlCommand())
+                    {
+                        sqlConn.Open();
+                        cmd.Connection = sqlConn;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.CommandText = "findProductByName";
+                        cmd.Parameters.Add(new SqlParameter("@name", name));
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        RepeaterProduct.DataSource = dt;
+                        RepeaterProduct.DataBind();
+                    }
+                }
+            }
         }
 
         protected void btnCanceSearch_Click(object sender, EventArgs e)
@@ -77,7 +116,7 @@ namespace BtlWeb.Client
                     sqlConn.Open();
                     cmd.Connection = sqlConn;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "getProduceById";
+                    cmd.CommandText = "getProductById";
                     cmd.Parameters.Add(new SqlParameter("@id", id));
                     SqlDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
@@ -100,6 +139,28 @@ namespace BtlWeb.Client
             Session["cartsCount"] = count;
             Session["carts"] = carts;
             Response.Write("<script> alert('Thêm vào giỏ hàng thành công!'); window.location='http://localhost:54996/Client/HomePage.aspx';</script>");
+        }
+
+        protected void LinkButtonItem_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            int id = Convert.ToInt32(btn.CommandArgument.ToString());
+            using (SqlConnection sqlConn = new SqlConnection(conStr))
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    sqlConn.Open();
+                    cmd.Connection = sqlConn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "getProductByCateId";
+                    cmd.Parameters.Add(new SqlParameter("@cateId", id));
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    RepeaterProduct.DataSource = dt;
+                    RepeaterProduct.DataBind();
+                }
+            }
         }
     }
 }

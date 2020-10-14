@@ -20,7 +20,7 @@ namespace BtlWeb
             Session["isLogin"] = false;
             Session["name"] = "";
             Session["cartsCount"] = 0;
-            Session["currentUserId"] = 0;
+            Session["currentUserId"] = "";
             Session["carts"] = new List<CustomProduct>();
         }
 

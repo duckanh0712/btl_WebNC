@@ -16,6 +16,7 @@ namespace BtlWeb.Client
                 Response.Write("<script>alert('Bạn chưa đăng nhập');window.location='http://localhost:54996/LoginPage.aspx';</script>");
             }
             Session["carts"] = new List<CustomProduct>();
+            Session["cartsCount"] = 0;
         }
 
         protected void btnHomePage_Click(object sender, EventArgs e)
