@@ -75,6 +75,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Product
                         </a>
+                        <a class="nav-link" href="Users.aspx">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            User
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -89,7 +93,7 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2020</div>
+                        <div class="text-muted">Copyright &copy; Anh Quang - 16A2 - 2020</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;

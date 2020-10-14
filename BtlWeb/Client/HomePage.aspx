@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-12">
                 <div class="row page-center">
-                    <asp:DataPager ID="dtpArticles" runat="server" PagedControlID="ListViewProduct" PageSize="5" ClientIDMode="Static">
+                    <asp:DataPager ID="dtpArticles" runat="server" PagedControlID="ListViewProduct" PageSize="15" ClientIDMode="Static">
                         <Fields>
                             <asp:NextPreviousPagerField ButtonType="Link" ShowFirstPageButton="true" ShowPreviousPageButton="true"
                                 ShowNextPageButton="false" ButtonCssClass="prev-page text-info" />

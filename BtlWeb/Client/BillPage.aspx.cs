@@ -83,6 +83,17 @@ namespace BtlWeb.Client
                         cmd.CommandText = "addToCart";
                         cmd.Parameters.Add(new SqlParameter("@userId", userId));
                         cmd.Parameters.Add(new SqlParameter("@date", localDate));
+                        //List<CustomProduct> products = (List<CustomProduct>)Session["carts"];
+                        //int prices = 0;
+                        //foreach (CustomProduct customProduct in products)
+                        //{
+                        //    prices += customProduct.Count * customProduct.product.price;
+                        //    cmd.Parameters.Add(new SqlParameter("@price", customProduct.product.price));
+                        //    cmd.Parameters.Add(new SqlParameter("@pId", customProduct.product.id));
+                        //    cmd.Parameters.Add(new SqlParameter("@pId1", customProduct.product.id));
+                        //}
+                        //cmd.Parameters.Add(new SqlParameter("@amount", prices));
+                        //cmd.Parameters.Add(new SqlParameter("@pCount", products.Count));
                         cmd.ExecuteNonQuery();
                     }
                 }

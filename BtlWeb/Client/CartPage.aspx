@@ -11,8 +11,8 @@
             <table class="table table-hover">
                 <tr>
                     <th class="col-md-1">#</th>
-                    <th class="col-md-3">Hình minh hoạ</th>
-                    <th class="col-md-2">Tên sản phẩm</th>
+                    <th class="col-md-2">Hình minh hoạ</th>
+                    <th class="col-md-3">Tên sản phẩm</th>
                     <th class="col-md-2">Giá</th>
                     <th class="col-md-1">Số lượng</th>
                     <th class="col-md-2">Xem chi tiết</th>

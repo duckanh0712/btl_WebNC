@@ -129,6 +129,7 @@
     <Content Include="Server\Products.aspx" />
     <Content Include="Server\UpdateCategory.aspx" />
     <Content Include="Server\UpdateProduct.aspx" />
+    <Content Include="Server\Users.aspx" />
     <Content Include="Theme\css\bootstrap-theme.css.map" />
     <Content Include="Theme\css\bootstrap-theme.min.css.map" />
     <Content Include="Theme\css\bootstrap.css.map" />
@@ -328,6 +329,13 @@
     </Compile>
     <Compile Include="Server\UpdateProduct.aspx.designer.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Server\Users.aspx.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Server\Users.aspx.designer.cs">
+      <DependentUpon>Users.aspx</DependentUpon>
     </Compile>
     <Compile Include="Utils\401.aspx.cs">
       <DependentUpon>401.aspx</DependentUpon>

@@ -230,6 +230,26 @@ GO
 
 exec getUserByUsername 'leequang198'
 
+CREATE PROCEDURE addToCartItem
+@userId INT,
+@date DATE,
+@pId INT,
+@pId1 INT,
+@price INT,
+@amount INT,
+@pCount INT
+AS
+	IF @pCount = 1
+	BEGIN
+		INSERT INTO tblCart(created_date, created_by) VALUES(@date, @userId)
+		INSERT INTO tblCartItem(cart_id, product_id, price, amount) VALUES(SCOPE_IDENTITY(), @pId, @price, @amount)
+	END
+	ELSE
+		INSERT INTO tblCart(created_date, created_by) VALUES(@date, @userId)
+		INSERT INTO tblCartItem(cart_id, product_id, price, amount) VALUES(SCOPE_IDENTITY(), @pId, @price, @amount)
+		INSERT INTO tblCartItem(cart_id, product_id, price, amount) VALUES(SCOPE_IDENTITY(), @pId1, @price, @amount)
+GO
+
 CREATE PROCEDURE addToCart
 @userId INT,
 @date DATE
@@ -237,11 +257,22 @@ AS
 	INSERT INTO tblCart(created_date, created_by) VALUES(@date, @userId)
 GO
 
---exec addToCart 1, '2020-11-11'
-
 --get product by category id
 CREATE PROCEDURE getProductByCateId
 @cateId INT
 AS
 	SELECT * FROM tblProduct WHERE tblProduct.category_id = @cateId
+GO
+
+--get all user
+CREATE PROCEDURE getAllUser
+AS
+	SELECT * FROM tblUser
+GO
+
+--get user by id
+CREATE PROCEDURE getUserById
+@id INT
+AS
+	SELECT * FROM tblUser WHERE tblUser.id = @id
 GO

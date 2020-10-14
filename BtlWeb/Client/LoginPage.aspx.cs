@@ -64,7 +64,9 @@ namespace BtlWeb.Client
                             cmd.Parameters.Add(new SqlParameter("@username", txtUsername.Text));
                             cmd.Parameters.Add(new SqlParameter("@password", txtPassword.Text));
                             cmd.ExecuteNonQuery();
-                            Response.Redirect("HomePage.aspx");
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "none",
+                            "<script type=\"text/javascript\" language=\"Javascript\" >"
+                            + "$('#loginSuccess').modal('show');</script>", false);
                         }
                     }
                 }

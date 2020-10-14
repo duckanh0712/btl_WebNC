@@ -8,9 +8,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace BtlWeb.Client
+namespace BtlWeb.Server
 {
-    public partial class ProfilePage : System.Web.UI.Page
+    public partial class Users : System.Web.UI.Page
     {
         string conStr = ConfigurationManager.ConnectionStrings["myCnnStr"] + "";
         protected void Page_Load(object sender, EventArgs e)
@@ -23,23 +23,27 @@ namespace BtlWeb.Client
 
         private void LoadData()
         {
-            string userId = (string)Session["currentUserId"];
-            using (SqlConnection sqlConn = new SqlConnection(conStr))
+            using (SqlConnection sqlconn = new SqlConnection(conStr))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    sqlConn.Open();
-                    cmd.Connection = sqlConn;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    cmd.CommandText = "getUserById";
-                    cmd.Parameters.Add(new SqlParameter("@id", userId));
+                    sqlconn.Open();
+                    cmd.Connection = sqlconn;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "getAllUser";
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
-                    Repeater1.DataSource = dt;
-                    Repeater1.DataBind();
+                    GridViewUser.DataSource = dt;
+                    GridViewUser.DataBind();
                 }
             }
+        }
+
+        protected void GridViewUser_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewUser.PageIndex = e.NewPageIndex;
+            LoadData();
         }
     }
 }
