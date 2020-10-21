@@ -13,7 +13,7 @@
                                 <h5>Tên sản phẩm</h5>
                             </legend>
                             <asp:TextBox ID="txtNameProduct" runat="server" class="form-control" placeholder="Tên sản phẩm"></asp:TextBox>
-                            <asp:Button ID="btnSearch" class="btn btn-default m-t-10" runat="server" Text="Tìm Kiếm" OnClick="btnSearch_Click" />
+                            <asp:Button ID="btnSearch" class="btn btn-default m-t-10" runat="server" Text="Tìm Kiếm"  />
                         </fieldset>
                     </li>
                     <li>
@@ -36,10 +36,10 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
-                    <%--<h4 class="col-md-3">Danh mục sản phẩm</h4>--%>
+                    <h4 class="col-md-3">Danh mục sản phẩm</h4>
                     <asp:Button ID="btnCanceSearch" runat="server" Text="Bỏ lọc sản phẩm" class="btn btn-default col-md-3" Visible="false" OnClick="btnCanceSearch_Click" Style="margin-top: 4px;" />
                 </div>
-                <asp:ListView ID="ListViewProduct" runat="server" OnPagePropertiesChanging="ListViewProduct_PagePropertiesChanging">
+                <asp:ListView ID="ListViewProduct" runat="server" OnPagePropertiesChanging="ListViewProduct_PagePropertiesChanging" > 
                     <ItemTemplate>
                         <div class="item col-md-4 col-sm-5">
                             <div class="row" id="ContentProduct">

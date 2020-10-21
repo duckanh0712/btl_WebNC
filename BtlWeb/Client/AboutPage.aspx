@@ -7,7 +7,7 @@
         <div class="col-md-offset-1">
             + Lê Anh Quang <br />
             + Khuất Đức Khánh <br />  
-            + Quốc Khánh Khánh <br />    
+            + Đỗ Quốc Khánh <br />    
             + Nguyễn Đăng Đạt <br />    
         </div>
         Đề tài: Xây dựng website bán hàng gồm các chức năng:<br />

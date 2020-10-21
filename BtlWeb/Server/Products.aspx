@@ -11,7 +11,7 @@
             <div class="card-body">
                 <asp:Button ID="AddProduct" runat="server" Text="Thêm" OnClick="AddProduct_Click" />
                 <asp:GridView ID="GridViewProduct" runat="server" CssClass="Grid" PagerStyle-CssClass="pgr" AutoGenerateColumns="false" Width="100%" OnRowCommand="GridViewProduct_RowCommand"
-                    AlternatingRowStyle-CssClass="alt" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridViewProduct_PageIndexChanging" PageSize="10">
+                    AlternatingRowStyle-CssClass="alt" GridLines="None" AllowPaging="True" OnPageIndexChanging="GridViewProduct_PageIndexChanging" PageSize="100">
                     <Columns>
                         <asp:BoundField DataField="id" HeaderText="ID" />
                         <asp:BoundField DataField="name" HeaderText="Name" />

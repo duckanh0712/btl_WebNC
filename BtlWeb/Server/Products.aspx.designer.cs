@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BtlWeb.Server {
-    
-    
-    public partial class Products {
-        
+namespace BtlWeb.Server
+{
+
+
+    public partial class Products
+    {
+
         /// <summary>
         /// formProduct control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace BtlWeb.Server {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm formProduct;
-        
+
         /// <summary>
         /// AddProduct control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace BtlWeb.Server {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AddProduct;
-        
+
         /// <summary>
         /// GridViewProduct control.
         /// </summary>

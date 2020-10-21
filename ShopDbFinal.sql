@@ -16,7 +16,7 @@ CREATE TABLE tblUser (
     role VARCHAR(20),
     name VARCHAR (50) NOT NULL,
     address VARCHAR (50) NOT NULL,
-    dateOfBirth DATETIME,
+    dateOfBirth DATE,
     phone VARCHAR(20),
     email VARCHAR(20),
     gender BIT
@@ -194,9 +194,7 @@ GO
 CREATE PROCEDURE getCategoryById
 @id INT
 AS
-	DECLARE @namereturn VARCHAR(20)
-		SELECT @namereturn=name FROM tblCategory WHERE tblCategory.id = @id
-	SELECT @namereturn AS name
+		SELECT * FROM tblCategory WHERE tblCategory.id = @id
 GO
 
 --delete product by id

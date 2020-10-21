@@ -19,11 +19,11 @@
                 <div class="form-group row">
                     <label for="<%=dateDob.ClientID%>" class="col-md-2 control-label">Ngày sinh</label>
                     <div class="col-md-5">
-                        <input type="date" id="dateDob" class="form-control" runat="server" placeholder="Ngày sinh"/>
+                        <input type="date" id="dateDob" name="dateDob" class="form-control" runat="server"  placeholder="Ngày sinh"/>
                     </div>
-                    <span id="err<%=dateDob.ClientID%>" class="help-block col-md-4" text=""></span>
+                    <span id="errns" class="help-block col-md-4" text=""></span>
                 </div>
-
+    
                 <div class="form-group row">
                     <label for="<%=listGender.ClientID%>" class="col-md-2 control-label">Giới tính</label>
                     <div class="col-md-5">
@@ -109,32 +109,7 @@
         <!-- Modal -->
     </div>
    <script type="text/javascript"> 
-       
-       <%--function validateUsername() {
-           var username = document.getElementById('<%=txtUsername.ClientID %>');
-            var usernameRegex = /^[a-zA-Z0-9]+$/;
-            if (!usernameRegex.test(username.value)) {
-                username.parentElement.parentElement.classList.add("has-error");
-                document.getElementById("<%=errUsername.ClientID%>").innerHTML = "Tài khoản chỉ bao gồm các ký tự  a - z, A - Z, 0 - 9";
-                username.focus();
-                return false;
-            } else if (!(username.value.trim().length >= 6 && username.value.trim().length <= 30)) {
-                username.parentElement.parentElement.classList.add("has-error");
-                document.getElementById('<%=errUsername.ClientID%>').innerHTML = "Tài khoản từ 6 - 30 ký tự";
-                username.focus();
-                return false;
-            } else {
-                username.parentElement.parentElement.classList.remove("has-error");
-                username.parentElement.parentElement.classList.add("has-success");
-                document.getElementById('<%=errUsername.ClientID%>').innerHTML = "";
-               return true;
-           }
-
-       }--%>
-
        function validatePassword() {
-
-
            var password = document.getElementById('<%=txtPassword.ClientID%>');
            var passwordRegex = /^[a-zA-Z0-9]{6,}$/; 
            if (!passwordRegex.test(password.value)) {
@@ -183,40 +158,7 @@
                return true;
            }
        }
-       function checkNotNull(id) {
-           var value = document.getElementById(id);
-           if (value.value.trim().length == 0) {
-               document.getElementById("err" + id).innerHTML = "Không được bỏ trống trường giá trị";
-               value.parentElement.parentElement.classList.add("has-error");
-               return false;
-           } else {
-               document.getElementById("err" + id).innerHTML = "";
-               value.parentElement.parentElement.classList.remove("has-error");
-               value.parentElement.parentElement.classList.add("has-success");
-               return true;
-           }
-       }
-
-       function validateEmail() {
-           var email = document.getElementById('<%=txtEmail.ClientID%>');
-            var regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-            if (email.value.trim().length == 0) {
-                document.getElementById('<%=errEmail.ClientID%>').innerHTML = "Email không được để trống";
-                email.parentElement.parentElement.classList.add("has-error");
-                email.focus();
-                return false;
-            } else if (!regexEmail.test(email.value)) {
-                document.getElementById('<%=errEmail.ClientID%>').innerHTML = "Email không đúng định dạng <br /> Ví dụ: example@email.com";
-                email.parentElement.parentElement.classList.add("has-error");
-                email.focus();
-                return false;
-            } else {
-                document.getElementById('<%=errEmail.ClientID%>').innerHTML = "";
-                email.parentElement.parentElement.classList.remove("has-error");
-                email.parentElement.parentElement.classList.add("has-success");
-                return true;
-            }
-    }
+     
 
     </script>
 </asp:Content>

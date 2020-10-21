@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BtlWeb.Client {
-    
-    
-    public partial class RegisterPage {
-        
+namespace BtlWeb.Client
+{
+
+
+    public partial class RegisterPage
+    {
+
         /// <summary>
         /// formRegister control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm formRegister;
-        
+
         /// <summary>
         /// txtFullName control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFullName;
-        
+
         /// <summary>
         /// dateDob control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dateDob;
-        
+
         /// <summary>
         /// listGender control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList listGender;
-        
+
         /// <summary>
         /// txtAddress control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
-        
+
         /// <summary>
         /// txtPhoneNumber control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPhoneNumber;
-        
+
         /// <summary>
         /// txtEmail control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
+
         /// <summary>
         /// errEmail control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errEmail;
-        
+
         /// <summary>
         /// txtUsername control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUsername;
-        
+
         /// <summary>
         /// errUsername control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errUsername;
-        
+
         /// <summary>
         /// txtPassword control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
-        
+
         /// <summary>
         /// txtPassword2 control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace BtlWeb.Client {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword2;
-        
+
         /// <summary>
         /// btnSubmit control.
         /// </summary>
